@@ -46,7 +46,7 @@ function whoWonTheGame(playerScore, computerScore) {
 }
 
 
-function game() {
+function playGame() {
     //inicia el juego. Partida de 5 turnos.
     let playerScore = 0;
     let computerScore = 0;
@@ -63,4 +63,4 @@ function game() {
     return whoWonTheGame(playerScore, computerScore);
 }
 
-console.log(game());
+console.log(playGame());
