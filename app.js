@@ -4,7 +4,11 @@ function computerPlay() {
     const index = Math.floor(Math.random() * 3);
     return options[index];
 };
-
+//hacer ui con tres botones de piedra , papel o tijera en vez del prompt.
+//remover la logica de jugar 5 rounds
+//agregar a caada boton un listener que llaame a playRound() con el playerSelection cuando es clickado dicho boton (se puede mantener los console.log)
+//crear un div que muestre los resultados y cambiar los  console.log por DOM methods
+//mostrar los puntaajes y anunciar al ganador una vez que un jugador llegue a los 5 puntos  
 function playRound(playerSelection, computerSelection) {
     //juega un round y retorna un string en torno a lo elegido
     const myOption = playerSelection.toLowerCase();
@@ -50,7 +54,7 @@ function playGame() {
     //inicia el juego. Partida de 5 turnos.
     let playerScore = 0;
     let computerScore = 0;
-    for(let i = 0; i < 5; i++) {
+    /*for(let i = 0; i < 5; i++) {
         let playerInput = prompt("Ingresa rock, paper o scissor:");
         let result = playRound(playerInput, computerPlay());
         console.log(result);
@@ -59,7 +63,7 @@ function playGame() {
         } else {
             playerScore += 1;
         }
-    }
+    }*/
     return whoWonTheGame(playerScore, computerScore);
 }
 

@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    display: grid;
+    border: 2px solid red;
+    /*grid-template-columns: repeat(6, 1fr );
+    grid-template-rows: repeat(6, 1fr);*/
+    grid-template-areas: 
+        ". . title title . ."
+        ". score1 . . score2 ."
+        ". . . . . ."
+        ". . finalScore finalScore . ."
+        ". . . . . ."
+        "rock . paper paper . scissor";
+    /*width: 80%;*/
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 60%;
+}
+
+h1 {
+    grid-area: title;
+    border: 1px solid red;
+    justify-self: center;
+    align-self: center;
+}
+
+.score-player-one {
+    grid-area: score1;
+    border: 1px solid blue;
+    align-self: center;
+}
+
+.score-player-two {
+    grid-area: score2;
+    border: 1px solid blue;
+    align-self: center;
+}
+
+.final-score-container {
+    grid-area: finalScore;
+    border: 1px solid green;
+    align-self: center;
+    justify-self: center;
+}
+
+.btn-choice {
+    border: 1px solid orange;
+    align-self: center;
+    justify-self: center;
+    cursor: pointer;
+}
+
+.rock {
+    grid-area: rock;
+}
+
+.paper {
+    grid-area: paper;
+}
+
+.scissor {
+    grid-area: scissor;
+}
+
+
+
