@@ -1,14 +1,23 @@
+let computerScore = 0;
+let playerScore = 0;
+let round = 0;
+
+window.addEventListener("click", function(e) {
+    if((computerScore + playerScore) >= 5  ) {
+        resetScore();
+    }
+    if(e.target.hasAttribute("data-choice")) {
+        playGame(e);
+    }
+});
+
 function computerPlay() {
     //retorna un string de piedra, papel o tijeras
     const options = ["rock", "paper", "scissors"];
     const index = Math.floor(Math.random() * 3);
     return options[index];
 };
-//hacer ui con tres botones de piedra , papel o tijera en vez del prompt.
-//remover la logica de jugar 5 rounds
-//agregar a caada boton un listener que llaame a playRound() con el playerSelection cuando es clickado dicho boton (se puede mantener los console.log)
-//crear un div que muestre los resultados y cambiar los  console.log por DOM methods
-//mostrar los puntaajes y anunciar al ganador una vez que un jugador llegue a los 5 puntos  
+
 function playRound(playerSelection, computerSelection) {
     //juega un round y retorna un string en torno a lo elegido
     const myOption = playerSelection.toLowerCase();
@@ -38,33 +47,56 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function whoWonTheGame(playerScore, computerScore) {
-    //retorna quien es el ganador 
-    if(playerScore === computerScore) {
-        return "It's a tie!!";
-    }
-    if(playerScore < computerScore) {
-        return "You lose the game!!";
-    } else {
-        return "You win the game!!";
+    //Escribe quien es el ganador 
+    round += 1;
+    if(round === 5) {
+        const finalScore = document.querySelector(".final-score");
+        if(playerScore === computerScore) {
+            finalScore.textContent = "It's a tie!!";
+        }
+        if(playerScore < computerScore) {
+            finalScore.textContent = "You lose the game!!";
+        } else {
+            finalScore.textContent = "You win the game!!";
+        }
     }
 }
 
+function resetScore() {
+    const scorePlayerOne = document.querySelector(".score-player-one .score");
+    const scorePlayerTwo = document.querySelector(".score-player-two .score");
+    const finalScore = document.querySelector(".final-score");
+    computerScore = 0;
+    playerScore = 0;
+    round = 0;
+    scorePlayerOne.textContent = 0;
+    scorePlayerTwo.textContent = 0;
+    finalScore.textContent = "";
+}
 
-function playGame() {
+function choosedBtn(e) {
+    return e.target.getAttribute("data-choice") 
+}
+
+function addPoint(result) {
+    const scorePlayerOne = document.querySelector(".score-player-one .score");
+    const scorePlayerTwo = document.querySelector(".score-player-two .score");
+
+    if(result.indexOf("win") === -1) {
+        computerScore += 1;
+        scorePlayerTwo.textContent = computerScore;
+    } else {
+        playerScore += 1;
+        scorePlayerOne.textContent = playerScore;
+    }
+}
+
+function playGame(e) {
     //inicia el juego. Partida de 5 turnos.
-    let playerScore = 0;
-    let computerScore = 0;
-    /*for(let i = 0; i < 5; i++) {
-        let playerInput = prompt("Ingresa rock, paper o scissor:");
-        let result = playRound(playerInput, computerPlay());
-        console.log(result);
-        if(result.indexOf("win") === -1) {
-            computerScore += 1;
-        } else {
-            playerScore += 1;
-        }
-    }*/
+    const playerInput = choosedBtn(e);
+    const result = playRound(playerInput, computerPlay());
+    addPoint(result);
+
     return whoWonTheGame(playerScore, computerScore);
 }
 
-console.log(playGame());

@@ -33,12 +33,16 @@ h1 {
     grid-area: score1;
     border: 1px solid blue;
     align-self: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .score-player-two {
     grid-area: score2;
     border: 1px solid blue;
     align-self: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .final-score-container {
