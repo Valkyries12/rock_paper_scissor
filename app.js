@@ -3,7 +3,7 @@ let playerScore = 0;
 let round = 0;
 
 window.addEventListener("click", function(e) {
-    if((computerScore + playerScore) >= 5  ) {
+    if(/*(computerScore + playerScore)*/ round >= 5  ) {
         resetScore();
     }
     if(e.target.hasAttribute("data-choice")) {
@@ -29,16 +29,16 @@ function playRound(playerSelection, computerSelection) {
         result = `You win!. ${myOption} beats scissors`;
     };
     if(myOption == "scissors" && computerSelection == "rock") {
-        result = `You lose!. rock beats ${myOption}`;
+        result = `You lost!. rock beats ${myOption}`;
     };
     if(myOption == "paper" && computerSelection == "rock") {
         result = `You win!. ${myOption} beats rock`;
     };
     if(myOption == "rock" && computerSelection == "paper") {
-        result = `You lose!. paper beats ${myOption}`;
+        result = `You lost!. paper beats ${myOption}`;
     };
     if(myOption == "paper" && computerSelection == "scissors") {
-        result = `You lose!. scissors beats ${myOption}`;
+        result = `You lost!. scissors beats ${myOption}`;
     };     
     if(myOption == "scissors" && computerSelection == "paper") {
         result = `You win!. ${myOption} beats paper`;
@@ -51,13 +51,14 @@ function whoWonTheGame(playerScore, computerScore) {
     round += 1;
     if(round === 5) {
         const finalScore = document.querySelector(".final-score");
-        if(playerScore === computerScore) {
-            finalScore.textContent = "It's a tie!";
-        }
         if(playerScore < computerScore) {
             finalScore.textContent = "You lost!";
-        } else {
+        }
+        if(playerScore > computerScore) {
             finalScore.textContent = "You win!";
+        }
+        if(playerScore == computerScore) {
+            finalScore.textContent = "It's a tie!";
         }
         finalScore.classList.toggle("hide");
     }
@@ -88,15 +89,15 @@ function addPoint(result, playerInput, computerInput) {
     const scoreChoiceTwo = document.querySelector("#scoreTwo");
     scoreChoiceTwo.setAttribute("class", `fas fa-hand-${computerInput}`);
 
-    //if(result.indexOf("tie") === -1) {
-        if(result.indexOf("win") === -1) {
+        if(result.indexOf("lost") != -1) {
             computerScore += 1;
             scorePlayerTwo.textContent = computerScore;
-        } else {
+        } 
+        
+        if(result.indexOf("win") != -1) {
             playerScore += 1;
             scorePlayerOne.textContent = playerScore;
         }
-    //}
 
 }
 
