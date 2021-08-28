@@ -4,59 +4,106 @@
     padding: 0;
 }
 
+body {
+    background-color: #222831;
+    font-family: "Roboto",san-serif;
+}
+
+header {
+    align-items: center;
+    background-color: #393E46;
+    border-bottom: 3px solid #00ADB5;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    padding: 2.7% 0;
+    width: 100%;
+}
+
 .main-container {
     display: grid;
-    border: 2px solid red;
-    /*grid-template-columns: repeat(6, 1fr );
-    grid-template-rows: repeat(6, 1fr);*/
+    color: #ddd;
     grid-template-areas: 
-        ". . title title . ."
+        "finalScore finalScore finalScore finalScore finalScore finalScore"
         ". score1 . . score2 ."
         ". . . . . ."
-        ". . finalScore finalScore . ."
+        ". . . . . ."
         ". . . . . ."
         "rock . paper paper . scissor";
     /*width: 80%;*/
     margin: 0 auto;
-    margin-top: 10%;
-    width: 60%;
+    width: 35%;
+    grid-gap: 2px;
 }
 
 h1 {
-    grid-area: title;
-    border: 1px solid red;
-    justify-self: center;
     align-self: center;
+    color: #00ADB5;
+    font-size: 50px;
+    justify-self: center;
+    text-transform: capitalize;
+}
+
+.score-container {
+    align-items: center;
+    display: flex;
+    font-size: 24px;
+    text-transform: capitalize;
 }
 
 .score-player-one {
-    grid-area: score1;
-    border: 1px solid blue;
+    align-items: center;
     align-self: center;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    grid-area: score1;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    width: 130px;
 }
 
 .score-player-two {
-    grid-area: score2;
-    border: 1px solid blue;
+    align-items: center;
     align-self: center;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    grid-area: score2;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    width: 130px;
 }
 
 .final-score-container {
-    grid-area: finalScore;
-    border: 1px solid green;
     align-self: center;
+    display: flex;
+    grid-area: finalScore;
     justify-self: center;
+    margin-bottom: 20px;
+}
+
+.final-score {
+    font-size: 40px;
+    text-transform: capitalize;
+}
+
+#scoreOne,
+#scoreTwo {
+    font-size: 80px;
+    padding: 10px;
 }
 
 .btn-choice {
-    border: 1px solid orange;
     align-self: center;
-    justify-self: center;
+    background-color: #393e46;
+    border-radius: 10px;
+    border: 2px solid #ddd;
     cursor: pointer;
+    justify-self: center;
+}
+
+.far {
+    font-size: 100px;
+    padding: 20px;
 }
 
 .rock {
@@ -69,6 +116,14 @@ h1 {
 
 .scissor {
     grid-area: scissor;
+}
+
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
 }
 
 
