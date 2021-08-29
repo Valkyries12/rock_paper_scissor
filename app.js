@@ -23,7 +23,7 @@ startCycle();
 
 function stopCycle() {
     clearInterval(startLooping);
-    setTimeout(startCycle, 1500);
+    setTimeout(startCycle, 1000);
 };
 
 
