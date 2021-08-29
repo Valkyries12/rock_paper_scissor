@@ -1,18 +1,52 @@
 let computerScore = 0;
 let playerScore = 0;
 let round = 0;
+var startLooping;
+
+
+
+function startCycle() {
+    if(round < 5) {
+        startLooping = setInterval(looping, 200);
+    } else {
+        clearInterval(startLooping);
+    }
+    
+    const finalScore = document.querySelector(".final-score");
+    if(!finalScore.classList.contains("hide") && round < 5){
+        finalScore.classList.toggle("hide");
+    }
+    
+};
+
+startCycle();
+
+function stopCycle() {
+    clearInterval(startLooping);
+    setTimeout(startCycle, 1500);
+};
+
+
+function looping() {
+    const options = ["fas fa-hand-rock", "fas fa-hand-paper", "fas fa-hand-scissors"];
+    const index = Math.floor(Math.random() * 3);
+    
+    const scoreChoiceOne = document.querySelector("#scoreOne");
+    scoreChoiceOne.setAttribute("class", `fas fa-hand-${options[index]}`);
+    const scoreChoiceTwo = document.querySelector("#scoreTwo");
+    scoreChoiceTwo.setAttribute("class", `fas fa-hand-${options[index]}`);
+};
 
 window.addEventListener("click", function(e) {
     if(round >= 5 && e.target.hasAttribute("data-choice")  ) {
-        //resetScore();
         showHidePopup();
-        //restartGame();
     }
     if(e.target.classList.contains("btn-restart") && round >= 5) {
         restartGame();
     }
     if(e.target.hasAttribute("data-choice")) {
         playGame(e);
+        stopCycle();
     }
 });
 
@@ -26,6 +60,8 @@ function showHidePopup() {
 function restartGame() {
     resetScore();
     showHidePopup();
+    //clearInterval(startLooping);
+    startCycle();
 };
 
 function computerPlay() {
@@ -82,6 +118,7 @@ function whoWonTheGame(playerScore, computerScore) {
             winLoseTxt.textContent = `It's a tie ${String.fromCodePoint(0x1F454)}`;
         }
         //finalScore.classList.toggle("hide");
+        clearInterval(startLooping);
     }
 }
 
