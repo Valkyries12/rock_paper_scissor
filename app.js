@@ -3,13 +3,30 @@ let playerScore = 0;
 let round = 0;
 
 window.addEventListener("click", function(e) {
-    if(/*(computerScore + playerScore)*/ round >= 5  ) {
-        resetScore();
+    if(round >= 5 && e.target.hasAttribute("data-choice")  ) {
+        //resetScore();
+        showHidePopup();
+        //restartGame();
+    }
+    if(e.target.classList.contains("btn-restart") && round >= 5) {
+        restartGame();
     }
     if(e.target.hasAttribute("data-choice")) {
         playGame(e);
     }
 });
+
+function showHidePopup() {
+    const overlay = document.querySelector(".overlay");
+    const popup = document.querySelector(".popup");
+    overlay.classList.toggle("hide");
+    popup.classList.toggle("hide");
+};
+
+function restartGame() {
+    resetScore();
+    showHidePopup();
+};
 
 function computerPlay() {
     //retorna un string de piedra, papel o tijeras
@@ -51,14 +68,18 @@ function whoWonTheGame(playerScore, computerScore) {
     round += 1;
     if(round === 5) {
         const finalScore = document.querySelector(".final-score");
+        const winLoseTxt = document.querySelector("#winLoseTxt");
         if(playerScore < computerScore) {
             finalScore.textContent = "You lost!";
+            winLoseTxt.textContent = `You lost ${String.fromCodePoint(0x1F626)}`;
         }
         if(playerScore > computerScore) {
             finalScore.textContent = "You win!";
+            winLoseTxt.textContent = `You win ${String.fromCodePoint(0x1F600)}`;
         }
         if(playerScore == computerScore) {
             finalScore.textContent = "It's a tie!";
+            winLoseTxt.textContent = `It's a tie ${String.fromCodePoint(0x1F454)}`;
         }
         finalScore.classList.toggle("hide");
     }
