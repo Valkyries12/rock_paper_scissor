@@ -81,7 +81,7 @@ function whoWonTheGame(playerScore, computerScore) {
             finalScore.textContent = "It's a tie!";
             winLoseTxt.textContent = `It's a tie ${String.fromCodePoint(0x1F454)}`;
         }
-        finalScore.classList.toggle("hide");
+        //finalScore.classList.toggle("hide");
     }
 }
 
@@ -105,6 +105,12 @@ function addPoint(result, playerInput, computerInput) {
     const scorePlayerOne = document.querySelector(".score-player-one .score");
     const scorePlayerTwo = document.querySelector(".score-player-two .score");
     const scoreChoiceOne = document.querySelector("#scoreOne");
+    const finalScore = document.querySelector(".final-score");
+    finalScore.textContent = result;
+    if(finalScore.classList.contains("hide")) {
+        finalScore.classList.toggle("hide");
+    };
+
     scoreChoiceOne.setAttribute("class", `fas fa-hand-${playerInput}`);
 
     const scoreChoiceTwo = document.querySelector("#scoreTwo");
