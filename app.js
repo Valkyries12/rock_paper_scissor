@@ -40,25 +40,25 @@ function playRound(playerSelection, computerSelection) {
     const myOption = playerSelection.toLowerCase();
     let result = "";
     if(myOption === computerSelection) {
-        result = `It's a tie!. ${myOption} is the same as ${computerSelection}`;
+        result = "It's a tie!";
     };
     if(myOption == "rock" && computerSelection == "scissors") {
-        result = `You win!. ${myOption} beats scissors`;
+        result = "You win!";
     };
     if(myOption == "scissors" && computerSelection == "rock") {
-        result = `You lost!. rock beats ${myOption}`;
+        result = "You lost!";
     };
     if(myOption == "paper" && computerSelection == "rock") {
-        result = `You win!. ${myOption} beats rock`;
+        result = "You win!";
     };
     if(myOption == "rock" && computerSelection == "paper") {
-        result = `You lost!. paper beats ${myOption}`;
+        result = "You lost!";
     };
     if(myOption == "paper" && computerSelection == "scissors") {
-        result = `You lost!. scissors beats ${myOption}`;
+        result = "You lost!";
     };     
     if(myOption == "scissors" && computerSelection == "paper") {
-        result = `You win!. ${myOption} beats paper`;
+        result = "You win!";
     }; 
     return result;
 }
