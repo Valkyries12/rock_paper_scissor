@@ -180,7 +180,7 @@ h1 {
 /* media queries */
 /*****************/
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     
     .main-container {
         width: 100%;
