@@ -40,9 +40,11 @@ function looping() {
 window.addEventListener("click", function(e) {
     if(round >= 5 && e.target.hasAttribute("data-choice")  ) {
         showHidePopup();
+        playSound();
     }
     if(e.target.classList.contains("btn-restart") && round >= 5) {
         restartGame();
+        stopSound();
     }
     if(e.target.hasAttribute("data-choice")) {
         playGame(e);
@@ -173,5 +175,28 @@ function playGame(e) {
     addPoint(result, playerInput, computerInput);
 
     return whoWonTheGame(playerScore, computerScore);
+}
+
+function playSound() {
+    const winSound = document.querySelector("#winSound");
+    const loseSound = document.querySelector("#loseSound");
+    const winLoseTxt = document.querySelector("#winLoseTxt").innerText;
+    
+    if(winLoseTxt.indexOf("win") != -1) {
+        winSound.currentTime = 0;
+        winSound.play();
+    }
+    if(winLoseTxt.indexOf("lost") != -1) {
+        loseSound.currentTime = 0;
+        loseSound.play();
+    }
+    
+}
+
+function stopSound() {
+    const winSound = document.querySelector("#winSound");
+    const loseSound = document.querySelector("#loseSound");
+    winSound.pause();
+    loseSound.pause();
 }
 
