@@ -1,0 +1,222 @@
+@import "_variables";
+@import "_mixins";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $background;
+    font-family: $main-font;
+}
+
+.header {
+    align-items: center;
+    background-color: #393E46;
+    border-bottom: 3px solid $secondary-color;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    padding: 50px 0;
+    width: 100%;
+
+    @include desktop {
+        padding: 40px 0;
+    }
+
+    &__main-title {
+        align-self: center;
+        color: $secondary-color;
+        font-size: 50px;
+        justify-self: center;
+        text-transform: capitalize;
+
+        @include desktop {
+            font-size: 30px;
+        }
+    }
+}
+
+.main {
+    display: grid;
+    color: $primary-color;
+    grid-template-areas: 
+        "finalScore finalScore finalScore"
+        "score score score"
+        "rock paper scissor";
+    margin: 0 auto;
+    width: 40%;
+    gap: 2px;
+    max-width: 734px;
+
+    @include desktop {
+        width: 100%;
+    }
+
+    &__final-score-wrapper {
+        align-self: center;
+        display: flex;
+        grid-area: finalScore;
+        justify-self: center;
+        margin-bottom: 20px;
+    }
+
+    &__final-score {
+        font-size: clamp(30px, 35px, 40px);
+        text-transform: capitalize;
+    }
+
+    &__score-player-one {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        grid-area: score;
+        justify-content: space-around;
+        justify-self: center;
+        margin-bottom: 15px;
+        margin-right: 35%;
+        width: 130px;
+    }
+
+    &__score-player-two {
+        align-items: center;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        grid-area: score;
+        justify-content: space-around;
+        justify-self: center;
+        margin-bottom: 15px;
+        margin-left: 32%;
+        width: 130px;
+    }
+
+    &__score-container {
+        align-items: center;
+        display: flex;
+        font-size: 24px;
+        text-transform: capitalize;
+    }
+
+    &__btn-choice {
+        align-self: center;
+        background-color: #393e46;
+        border-radius: 10px;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+        justify-self: center;
+    }
+
+    &__btn-rock {
+        grid-area: rock;
+    }
+    
+    &__btn-paper {
+        grid-area: paper;
+    }
+    
+    &__btn-scissor {
+        grid-area: scissor;
+    }
+}
+
+.popup {
+    align-items: center;
+    background-color: $background;
+    border-radius: 10px;
+    border: 2px solid $secondary-color;
+    color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
+    justify-content: space-around;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    z-index: 10;
+
+    @include desktop {
+        font-size: 24px;
+        width: 350px;
+    }
+
+    &__text {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    &__btn-restart {
+        background-color: #393e46;
+        border-radius: 10px;
+        border: 2px solid $primary-color;
+        cursor: pointer;
+        display: inline-block;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        padding: 20px;
+        text-transform: capitalize;
+
+        @include desktop {
+            padding: 17px;
+        }
+
+        &:hover {
+            background-color: #4a4f57;
+        }
+    }
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, .5);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+#scoreOne,
+#scoreTwo {
+    font-size: 80px;
+    padding: 10px;
+    justify-self: center;
+    align-self: center;
+
+    @include mobile {
+        font-size: 55px;
+    }
+}
+
+
+
+.hide {
+    visibility: hidden;
+}
+
+.far {
+    font-size: 100px;
+    padding: 20px;
+
+    @include mobile {
+        font-size: 55px;
+    }
+}
+
+.fas {
+    @include mobile {
+        font-size: 55px;
+    }
+}
+
+.show {
+    visibility: visible;
+}
+
+.hide {
+    visibility: hidden;
+}
+

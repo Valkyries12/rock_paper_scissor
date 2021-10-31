@@ -9,47 +9,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header>
-        <h1>Rock paper Scissors!!!</h1>
+    <header class="header">
+        <h1 class="header__main-title">Rock paper Scissors!!!</h1>
     </header>
-    <main class="main-container">
-        <div class="final-score-container">
-            <p class="final-score hide">you win</p>
+    <main class="main">
+        <div class="main__final-score-wrapper">
+            <p class="main__final-score hide">you win</p>
         </div>
 
-        <div class="score-player-one">
-            <div class="score-container">
+        <div class="main__score-player-one">
+            <div class="main__score-container">
                 <p>you:</p>
-                <p class="score">0</p>
+                <p data-score="player1" class="score-container__score">0</p>
             </div>
             <i id="scoreOne" class="fas fa-hand-rock hide"></i>
         </div>
 
-        <div class="score-player-two">
-            <div class="score-container">
+        <div class="main__score-player-two">
+            <div class="main__score-container">
                 <p>computer:</p>
-                <p class="score">0</p>
+                <p data-score="player2" class="score-container__score">0</p>
             </div>
             <i id="scoreTwo" class="fas fa-hand-rock hide"></i>
         </div>
 
         
 
-        <div class="btn-choice rock" ><i data-choice="rock" class="far fa-hand-rock"></i></div>
-        <div class="btn-choice paper" ><i data-choice="paper" class="far fa-hand-paper"></i></div>
-        <div class="btn-choice scissor" ><i data-choice="scissors" class="far fa-hand-scissors"></i></div>
-
-        <div class="popup hide">
-            <p class="popup-text" id="winLoseTxt"></p>
-            <p class="popup-text">Would you like to try again?</p>
-            <div class="btn-restart">Restart</div>
-        </div>
-        <div class="overlay hide"></div>
+        <div class="main__btn-choice main__btn-rock" ><i data-choice="rock" class="far fa-hand-rock"></i></div>
+        <div class="main__btn-choice main__btn-paper" ><i data-choice="paper" class="far fa-hand-paper"></i></div>
+        <div class="main__btn-choice main__btn-scissor" ><i data-choice="scissors" class="far fa-hand-scissors"></i></div>
 
     </main>
+
+    <div class="popup hide">
+        <p class="popup__text" id="winLoseTxt"></p>
+        <p class="popup__text">Would you like to try again?</p>
+        <div data-btn="restart" class="popup__btn-restart">Restart</div>
+    </div>
+    <div class="overlay hide"></div>
 
 
 

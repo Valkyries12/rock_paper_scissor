@@ -1,0 +1,14 @@
+@import "_variables";
+
+//haver mixin de mediaquerys
+@mixin desktop {
+    @media (max-width: #{$desktop}) {
+        @content;
+    }
+};
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+};

@@ -10,7 +10,7 @@ function startCycle () {
     clearInterval(startLooping)
   }
 
-  const finalScore = document.querySelector('.final-score')
+  const finalScore = document.querySelector('.main__final-score')
   if (!finalScore.classList.contains('hide') && round < 5) {
     finalScore.classList.toggle('hide')
   }
@@ -38,7 +38,7 @@ window.addEventListener('click', function (e) {
     showHidePopup()
     playSound()
   }
-  if (e.target.classList.contains('btn-restart') && round >= 5) {
+  if (e.target.closest("[data-btn='restart']") && round >= 5) {
     restartGame()
     stopSound()
   }
@@ -101,7 +101,7 @@ function whoWonTheGame (playerScore, computerScore) {
   // Escribe quien es el ganador
   round += 1
   if (round === 5) {
-    const finalScore = document.querySelector('.final-score')
+    const finalScore = document.querySelector('.main__final-score')
     const winLoseTxt = document.querySelector('#winLoseTxt')
     if (playerScore < computerScore) {
       finalScore.textContent = 'You lost!'
@@ -121,9 +121,9 @@ function whoWonTheGame (playerScore, computerScore) {
 }
 
 function resetScore () {
-  const scorePlayerOne = document.querySelector('.score-player-one .score')
-  const scorePlayerTwo = document.querySelector('.score-player-two .score')
-  const finalScore = document.querySelector('.final-score')
+  const scorePlayerOne = document.querySelector("[data-score='player1']")
+  const scorePlayerTwo = document.querySelector("[data-score='player2']")
+  const finalScore = document.querySelector('.main__final-score')
   computerScore = 0
   playerScore = 0
   round = 0
@@ -137,10 +137,10 @@ function choosedBtn (e) {
 }
 
 function addPoint (result, playerInput, computerInput) {
-  const scorePlayerOne = document.querySelector('.score-player-one .score')
-  const scorePlayerTwo = document.querySelector('.score-player-two .score')
+  const scorePlayerOne = document.querySelector("[data-score='player1']")
+  const scorePlayerTwo = document.querySelector("[data-score='player2']")
   const scoreChoiceOne = document.querySelector('#scoreOne')
-  const finalScore = document.querySelector('.final-score')
+  const finalScore = document.querySelector('.main__final-score')
   finalScore.textContent = result
   if (finalScore.classList.contains('hide')) {
     finalScore.classList.toggle('hide')
